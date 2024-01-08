@@ -88,20 +88,67 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+var passwordLength = prompt("Please enter the length of the password");
+
 // Function to prompt user for password options
-function getPasswordOptions() {
+function getPasswordOptions() { 
+  var passwordCharacter = [];
+  if (passwordLength >= 8 && passwordLength <= 128) {
+  var confirmLowercase = confirm("Would you like to include lowercase in your password?");
+  if (confirmLowercase == true) {
+    var passwordCharacter = lowerCasedCharacters;
+  } else {
+    passwordCharacter = passwordCharacter;
+  }
+  var confirmUppercase = confirm("Would you like to include uppercase in your password?");
+  if (confirmUppercase == true) {
+    passwordCharacter = passwordCharacter.concat(upperCasedCharacters);
+  } else {
+    passwordCharacter = passwordCharacter;
+  }
+  var confirmNumeric = confirm("Would you like to include numbers in your password?");
+  if (confirmNumeric == true) {
+    passwordCharacter = passwordCharacter.concat(numericCharacters);
+  } else {
+    passwordCharacter = passwordCharacter;
+  }  
+  var confirmSpecialCharacters = confirm("Would you like to include special characters in your password?");
+  if (confirmSpecialCharacters == true) {
+    passwordCharacter = passwordCharacter.concat(specialCharacters);
+  } else {
+    passwordCharacter = passwordCharacter;
+  } 
+  if (passwordCharacter == null) {
+    alert("You should pick at least one character type");
+  } else {
+  return passwordCharacter;
+  }
+} else { alert("Your password length must be at least 8 characters but no more than 128")};
+} ;
 
-}
-
+var getPassword = getPasswordOptions();
+ 
 // Function for getting a random element from an array
-function getRandom(arr) {
 
-}
+function getRandom(getPassword) {
+  return getPassword[Math.floor(Math.random() * getPassword.length)]
+};
+
 
 // Function to generate password with user input
 function generatePassword() {
+  var passwordArray = [];
 
+for (var i = 0; i<passwordLength; i++){
+   var randomElement = getRandom(getPassword);
+  passwordArray.push(randomElement);
 }
+var passwordWithCommas = passwordArray.join();
+var password = passwordWithCommas.split(',').map(s => s.trim()).join('');
+  return password;
+};
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
