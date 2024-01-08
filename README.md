@@ -1,7 +1,7 @@
 # Password-Generator
 
 ## Description
-This web application has been created to generate password using JavaScript. Userc can reach the application through this <a href="" target="_blank">link</a>.
+This web application has been created to generate password using JavaScript. Userc can reach the application through this <a href="https://hazalsigic.github.io/Password-Generator/" target="_blank">link</a>.
 
 ## Installation
 N/A
